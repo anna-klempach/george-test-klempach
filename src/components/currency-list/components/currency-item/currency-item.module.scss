@@ -1,0 +1,25 @@
+@import '../../../../styles/mixins';
+@import '../../../../styles/variables';
+
+.container {
+  @include flex-row($size-small);
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: $size-medium;
+  color: $color-primary-dark;
+  @include font-configuration($font-size-xlarge);
+  @include border-configuration(1px);
+}
+
+.currencyData {
+  @include flex-row($size-small);
+  align-items: center;
+}
+
+.currency {
+  color: $color-primary;
+}
+
+.noData {
+  color: $color-secondary;
+}

@@ -1,4 +1,5 @@
 @import './reset.scss';
+@import './variables';
 
 body {
   margin: 0;
@@ -9,4 +10,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.notification-error {
+  background-color: $color-error-background;
+
+  button {
+    color: $color-error;
+  }
 }

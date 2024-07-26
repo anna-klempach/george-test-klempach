@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import styles from './App.module.scss';
-import { Main } from './pages/main/Main';
+import styles from './app.module.scss';
+import { Main } from './pages/main/main.component';
 
 function App() {
   return (
