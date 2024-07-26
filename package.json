@@ -10,6 +10,7 @@
     "@types/node": "^16.18.104",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "axios": "^1.7.2",
     "husky": "^9.1.2",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
@@ -17,6 +18,7 @@
     "react-router-dom": "^6.25.1",
     "react-scripts": "^5.0.1",
     "sass": "^1.77.8",
+    "sweetalert": "^2.1.2",
     "typescript": "^3.2.1"
   },
   "scripts": {
@@ -36,6 +38,17 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{service,component,api}.{js,jsx,ts,tsx}"
+    ],
+    "coverageReporters": [
+      "text"
+    ],
+    "moduleNameMapper": {
+      "^axios$": "axios/dist/node/axios.cjs"
+    }
   },
   "browserslist": {
     "production": [

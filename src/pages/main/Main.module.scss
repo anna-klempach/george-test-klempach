@@ -24,8 +24,7 @@
     padding: $size-xsmall $size-small;
     color: $color-primary-dark;
     @include font-configuration($font-size-regular);
-    border-radius: 3px;
-    border: 2px solid $color-border;
+    @include border-configuration();
     font-family: inherit;
     &:focus-visible {
       outline: none;

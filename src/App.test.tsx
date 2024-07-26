@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
-import App from './App';
 import { renderWithUrl } from './utils/test.utils';
+import App from './app.component';
 describe('App', () => {
   it('should render header', () => {
     renderWithUrl(<App />);

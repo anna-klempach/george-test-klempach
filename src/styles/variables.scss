@@ -10,6 +10,8 @@ $color-text-heading-light: color.adjust($color-text-heading, $lightness: 30%);
 $color-border: #4e4f50;
 $color-border-active: $color-primary-dark;
 $color-background: #fafafa;
+$color-error: #906466;
+$color-error-background: color.adjust($color-error, $lightness: 40%);
 
 /* Size */
 
@@ -22,6 +24,7 @@ $size-xlarge: 64px;
 /* Font size */
 
 $font-size-h1: $size-large;
+$font-size-xlarge: 24px;
 $font-size-large: 18px;
 $font-size-regular: 14px;
 

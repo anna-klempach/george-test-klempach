@@ -16,3 +16,8 @@
   font-weight: $weight;
   line-height: 1.5;
 }
+
+@mixin border-configuration($width: 2px) {
+  border-radius: 3px;
+  border: $width solid $color-border;
+}

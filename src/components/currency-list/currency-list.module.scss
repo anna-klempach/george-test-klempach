@@ -1,0 +1,17 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables';
+
+.container {
+  @include flex-column($size-small);
+  padding: $padding-primary;
+}
+
+.noData {
+  @include flex-row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-grow: 1;
+  color: $color-secondary;
+  @include font-configuration($font-size-xlarge, $font-weight-bold);
+}
