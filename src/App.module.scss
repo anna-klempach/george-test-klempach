@@ -1,0 +1,21 @@
+@use 'sass:color';
+@import './styles/variables.scss';
+@import './styles/mixins.scss';
+
+.app {
+  @include flex-column($size-small);
+  justify-content: stretch;
+  width: 100%;
+  min-height: 100%;
+}
+
+.appHeader {
+  padding: $size-medium;
+  color: $color-text-heading;
+  background-color: color.adjust($color-primary, $lightness: -30%);
+}
+
+.appHeaderText {
+  @include font-configuration($font-size-h1, $font-weight-bold);
+  font-weight: $font-weight-bold;
+}
