@@ -1,9 +1,11 @@
-import './App.css';
+import styles from './App.module.scss';
 
 function App() {
   return (
-    <div className="app">
-      <header className="app-header">George Test</header>
+    <div className={styles.app}>
+      <header className={styles.appHeader}>
+        <h1 className={styles.appHeaderText}>George FE Test</h1>
+      </header>
     </div>
   );
 }
