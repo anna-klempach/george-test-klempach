@@ -5,5 +5,5 @@ describe('App', () => {
     render(<App />);
     const header = screen.getByText(/george test/i);
     expect(header).toBeInTheDocument();
-  })
+  });
 });

@@ -10,18 +10,25 @@
     "@types/node": "^16.18.104",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "husky": "^9.1.2",
+    "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.25.1",
     "react-scripts": "^5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "typescript": "^3.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test:once": "set CI=true && react-scripts test",
+    "test:coverage": "npm test -- --coverage",
+    "test:coverage:all": "npm test -- --coverage --watchAll",
+    "eject": "react-scripts eject",
+    "lint": "npx eslint . --max-warnings=0",
+    "format": "npx prettier . --write",
+    "prepare": "husky"
   },
   "eslintConfig": {
     "extends": [
