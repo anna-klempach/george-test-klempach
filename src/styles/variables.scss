@@ -1,14 +1,19 @@
+@use 'sass:color';
+
 /* Colors */
 
 $color-primary: #647c90;
+$color-primary-dark: color.adjust($color-primary, $lightness: -30%);
 $color-secondary: #746c70;
 $color-text-heading: #e2ded0;
+$color-text-heading-light: color.adjust($color-text-heading, $lightness: 30%);
 $color-border: #4e4f50;
-$color-border-active: #647c90;
+$color-border-active: $color-primary-dark;
 $color-background: #fafafa;
 
 /* Size */
 
+$size-xsmall: 4px;
 $size-small: 8px;
 $size-medium: 16px;
 $size-large: 32px;
@@ -17,8 +22,13 @@ $size-xlarge: 64px;
 /* Font size */
 
 $font-size-h1: $size-large;
+$font-size-large: 18px;
 $font-size-regular: 14px;
 
 /* Font weight */
 
 $font-weight-bold: 600;
+
+/* Padding */
+
+$padding-primary: $size-medium $size-large;

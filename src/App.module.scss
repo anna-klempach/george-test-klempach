@@ -3,16 +3,16 @@
 @import './styles/mixins.scss';
 
 .app {
-  @include flex-column($size-small);
+  @include flex-column();
   justify-content: stretch;
   width: 100%;
   min-height: 100%;
 }
 
 .appHeader {
-  padding: $size-medium;
+  padding: $padding-primary;
   color: $color-text-heading;
-  background-color: color.adjust($color-primary, $lightness: -30%);
+  background-color: $color-primary-dark;
 }
 
 .appHeaderText {

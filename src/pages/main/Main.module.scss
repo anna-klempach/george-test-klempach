@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+@import '../../styles//mixins.scss';
+
+.container {
+  position: relative;
+  flex-grow: 1;
+  @include flex-column($size-medium);
+}
+
+.searchBar {
+  position: sticky;
+  top: 0;
+  @include flex-row($size-small);
+  align-items: center;
+  padding: $padding-primary;
+  background-color: $color-primary;
+
+  label {
+    color: $color-text-heading-light;
+    @include font-configuration($font-size-large);
+  }
+
+  input {
+    padding: $size-xsmall $size-small;
+    color: $color-primary-dark;
+    @include font-configuration($font-size-regular);
+    border-radius: 3px;
+    border: 2px solid $color-border;
+    font-family: inherit;
+    &:focus-visible {
+      outline: none;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $color-border-active;
+    }
+  }
+}
