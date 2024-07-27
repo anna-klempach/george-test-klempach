@@ -7,6 +7,7 @@ import { CurrencyListProps } from '../../components/currency-list/currency-list.
 import { MOCK_BASE_CURRENCY, MOCK_CURRENCIES } from '../../mocks/currency.mock';
 
 const mockSetSearchParams = jest.fn();
+const mockGetSearchParams = jest.fn();
 const mockCurrencyListTestId = 'mockCurrencyList';
 const mockCurrencyTestId = 'mockCurrency';
 const mockBaseCurrencyTestId = 'mockBaseCurrency';
@@ -16,7 +17,7 @@ jest.mock('react-router-dom', () => {
   const actualModule = jest.requireActual('react-router-dom');
   return {
     ...actualModule,
-    useSearchParams: () => [{}, mockSetSearchParams],
+    useSearchParams: () => [{ get: mockGetSearchParams }, mockSetSearchParams],
   };
 });
 
@@ -67,7 +68,21 @@ describe('Main Page', () => {
     fireEvent.change(inputElement, { target: { value: testValue } });
     expect(mockSetSearchParams).toHaveBeenLastCalledWith({ search: testValue });
   });
-
+  it('should set search parameter to undefined if no value has been set', async () => {
+    const testValue = 'Test';
+    mockGetSearchParams.mockReturnValue(testValue);
+    await act(async () => renderWithUrl(<Main />));
+    const inputElement = await screen.findByLabelText(/search/i);
+    fireEvent.change(inputElement, { target: { value: '' } });
+    expect(mockSetSearchParams).toHaveBeenLastCalledWith(undefined);
+  });
+  it('should get initial value from search parameter', async () => {
+    const testValue = 'Test';
+    mockGetSearchParams.mockReturnValue(testValue);
+    await act(async () => renderWithUrl(<Main />));
+    const inputElement = await screen.findByLabelText(/search/i);
+    expect(inputElement).toHaveValue(testValue);
+  });
   it('should render currency list', async () => {
     await act(async () => renderWithUrl(<Main />));
     expect(
