@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Currency } from '../../../../models/currency.model';
 import styles from './currency-item.module.scss';
 import {
+  getCurrencyPrecision,
   getImageSrc,
   NOT_AVAILABLE_TEXT,
 } from '../../../../services/currency-list.service';
@@ -14,6 +15,7 @@ export interface CurrencyItemProps {
 export const CurrencyItem = ({ item, baseCurrency }: CurrencyItemProps) => {
   const exchangeRate = item.exchangeRate?.middle;
   const currency = item.currency?.trim() || item.nameI18N;
+  const precision = item.precision;
   const [imgSrc, setImgSrc] = useState<string | null>(getImageSrc(currency));
   if (!currency || currency === baseCurrency) {
     return null;
@@ -34,7 +36,7 @@ export const CurrencyItem = ({ item, baseCurrency }: CurrencyItemProps) => {
       <div className={styles.currencyData}>
         {exchangeRate ? (
           <>
-            <p>{exchangeRate}</p>
+            <p>{getCurrencyPrecision(exchangeRate, precision)}</p>
             <p>{baseCurrency}</p>
           </>
         ) : (

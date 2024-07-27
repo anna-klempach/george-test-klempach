@@ -22,12 +22,14 @@ describe('Currency Item', () => {
     expect(await screen.findByText(MOCK_BASE_CURRENCY)).toBeInTheDocument();
   });
 
-  it('should display middle exchange rate if exchange rate is provided', async () => {
+  it('should display middle exchange rate if exchange rate is provided converted to fixed base on the precision', async () => {
     renderWithUrl(
       <CurrencyItem item={MOCK_CURRENCY} baseCurrency={MOCK_BASE_CURRENCY} />
     );
     expect(
-      await screen.findByText(MOCK_CURRENCY.exchangeRate!.middle)
+      await screen.findByText(
+        MOCK_CURRENCY.exchangeRate!.middle.toFixed(MOCK_CURRENCY.precision)
+      )
     ).toBeInTheDocument();
   });
   it('should display "N/A" if exchange rate is not provided', async () => {
