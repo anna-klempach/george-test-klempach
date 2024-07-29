@@ -124,6 +124,10 @@ Provides Error boundary component.
 
 Used for project routing. The main page is located on `/main` route. All other routes are redirected to main page.
 
+### `countries-list`
+
+Library to help with generating countries' names.
+
 ### `sweetalert`
 
 Provides alert component for response error interceptor.

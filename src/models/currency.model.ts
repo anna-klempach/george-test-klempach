@@ -1,4 +1,4 @@
-interface Rate {
+interface RateDTO {
   buy: number;
   middle: number;
   sell: number;
@@ -8,14 +8,21 @@ interface Rate {
 
 export interface Currency {
   currency: string;
-  precision: number;
-  nameI18N?: string;
-  exchangeRate?: Rate;
-  banknoteRate?: Rate;
-  denominations?: Array<number>;
+  exchangeRate?: string;
+  countryNames?: string[];
+  baseCurrency: string;
 }
 
 export interface CurrencyDTO {
+  currency: string;
+  precision: number;
+  nameI18N?: string;
+  exchangeRate?: RateDTO;
+  banknoteRate?: RateDTO;
+  denominations?: Array<number>;
+}
+
+export interface CurrencyDataDTO {
   baseCurrency: string;
-  fx: Array<Currency>;
+  fx: Array<CurrencyDTO>;
 }

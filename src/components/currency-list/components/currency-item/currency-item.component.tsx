@@ -8,12 +8,14 @@ import {
 export interface CurrencyItemProps {
   exchangeRate?: string;
   baseCurrency: string;
+  countryNames?: Array<string>;
   currency?: string;
 }
 
 export const CurrencyItem = ({
   exchangeRate,
   baseCurrency,
+  countryNames = [],
   currency,
 }: CurrencyItemProps) => {
   const [imgSrc, setImgSrc] = useState<string | null>(getImageSrc(currency));
@@ -35,6 +37,13 @@ export const CurrencyItem = ({
           <div className={styles.imagePlaceholder} />
         )}
         <p className={styles.currency}>{currency}</p>
+        {countryNames.length > 0 && (
+          <div className={styles.countries}>
+            {countryNames.map((country) => (
+              <p key={country}>{country}</p>
+            ))}
+          </div>
+        )}
       </div>
       <div className={styles.currencyData}>
         {exchangeRate ? (
