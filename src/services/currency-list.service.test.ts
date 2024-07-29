@@ -1,5 +1,26 @@
 import { MOCK_BASE_CURRENCY } from '../mocks/currency.mock';
-import { getCurrencyPrecision, getImageSrc } from './currency-list.service';
+import {
+  getCountryNames,
+  getCurrencyPrecision,
+  getImageSrc,
+} from './currency-list.service';
+
+jest.mock('countries-list', () => ({
+  countries: {
+    US: {
+      name: 'USA',
+      currency: ['TEST', 'TST'],
+    },
+    TS: {
+      name: 'Test',
+      currency: ['TEST', 'TEST 2', 'TST'],
+    },
+    CZ: {
+      name: 'Czech Republic',
+      currency: ['CZK'],
+    },
+  },
+}));
 
 describe('getImageSrc', () => {
   it('should return image src if currency is provided', () => {
@@ -39,5 +60,20 @@ describe('getCurrencyPrecision', () => {
     const value = 0;
     const expectedResult = '';
     expect(getCurrencyPrecision(value)).toBe(expectedResult);
+  });
+});
+
+describe('getCountryNames', () => {
+  it('should return empty array if no currency is passed', () => {
+    expect(getCountryNames('')).toEqual([]);
+  });
+  it('should return empty array if no country has matching currency', () => {
+    expect(getCountryNames('TEST 1')).toEqual([]);
+  });
+  it('should return array of country names that have matching currency', () => {
+    expect(getCountryNames('TEST')).toEqual(['USA', 'Test']);
+  });
+  it('should put the country with the code closest to currency code at the beginning of the list', () => {
+    expect(getCountryNames('TST')).toEqual(['Test', 'USA']);
   });
 });

@@ -1,8 +1,12 @@
-import { Currency, CurrencyDTO } from '../models/currency.model';
+import {
+  Currency,
+  CurrencyDataDTO,
+  CurrencyDTO,
+} from '../models/currency.model';
 
 export const MOCK_BASE_CURRENCY = 'USD';
 
-export const MOCK_CURRENCY: Currency = {
+export const MOCK_CURRENCY_DTO: CurrencyDTO = {
   currency: 'TEST',
   precision: 2,
   nameI18N: 'Test Currency',
@@ -15,7 +19,24 @@ export const MOCK_CURRENCY: Currency = {
   },
 };
 
+export const MOCK_CURRENCY: Currency = {
+  currency: 'TEST',
+  exchangeRate: '1.00',
+  baseCurrency: MOCK_BASE_CURRENCY,
+  countryNames: ['Country 1', 'Country 2'],
+};
+
 export const MOCK_CURRENCIES: Array<Currency> = [
+  MOCK_CURRENCY,
+  {
+    currency: 'TEST 1',
+    exchangeRate: '1.00',
+    baseCurrency: MOCK_BASE_CURRENCY,
+    countryNames: ['Country 1', 'Country 2'],
+  },
+];
+
+export const MOCK_CURRENCIES_DTO: Array<CurrencyDTO> = [
   {
     currency: 'TEST 1',
     precision: 2,
@@ -40,7 +61,7 @@ export const MOCK_CURRENCIES: Array<Currency> = [
   },
 ];
 
-export const MOCK_CURRENCY_DATA: CurrencyDTO = {
+export const MOCK_CURRENCY_DATA_DTO: CurrencyDataDTO = {
   baseCurrency: MOCK_BASE_CURRENCY,
-  fx: MOCK_CURRENCIES,
+  fx: MOCK_CURRENCIES_DTO,
 };
