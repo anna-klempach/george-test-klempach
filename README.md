@@ -128,6 +128,10 @@ Used for project routing. The main page is located on `/main` route. All other r
 
 Library to help with generating countries' names.
 
+### `react-world-flags`
+
+Library for world flags.
+
 ### `sweetalert`
 
 Provides alert component for response error interceptor.

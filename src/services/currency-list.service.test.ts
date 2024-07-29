@@ -1,9 +1,4 @@
-import { MOCK_BASE_CURRENCY } from '../mocks/currency.mock';
-import {
-  getCountryNames,
-  getCurrencyPrecision,
-  getImageSrc,
-} from './currency-list.service';
+import { getCountryNames, getCurrencyPrecision } from './currency-list.service';
 
 jest.mock('countries-list', () => ({
   countries: {
@@ -21,18 +16,6 @@ jest.mock('countries-list', () => ({
     },
   },
 }));
-
-describe('getImageSrc', () => {
-  it('should return image src if currency is provided', () => {
-    const slicedCurrency = MOCK_BASE_CURRENCY.toLowerCase().slice(0, 2);
-    const expectedResult = `./flags/${slicedCurrency}.png`;
-    expect(getImageSrc(MOCK_BASE_CURRENCY)).toBe(expectedResult);
-  });
-
-  it('should return empty string if currency is not provided', () => {
-    expect(getImageSrc('')).toBe('');
-  });
-});
 describe('getCurrencyPrecision', () => {
   it('should return number with precision if precision is provided', () => {
     const value = 5.6789;

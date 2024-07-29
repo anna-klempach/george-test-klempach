@@ -1,4 +1,4 @@
-import { fireEvent, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { renderWithUrl } from '../../../../utils/test.utils';
 import { CurrencyItem } from './currency-item.component';
 import { NOT_AVAILABLE_TEXT } from '../../../../services/currency-list.service';
@@ -6,6 +6,21 @@ import {
   MOCK_BASE_CURRENCY,
   MOCK_CURRENCY,
 } from '../../../../mocks/currency.mock';
+
+const existingCurrency = 'US';
+
+jest.mock('react-world-flags', () => ({ code }: { code: string }) => {
+  if (code === 'US') {
+    return <img src="" alt={code} />;
+  }
+  return <></>;
+});
+
+jest.mock('countries-list', () => ({
+  getCountryCode: () => ({
+    valueOf: () => 'US',
+  }),
+}));
 
 describe('Currency Item', () => {
   it('should display currency name', async () => {
@@ -65,10 +80,10 @@ describe('Currency Item', () => {
     expect(container).toBeEmptyDOMElement();
   });
   it('should display image if there is currency', async () => {
-    const existingCurrency = 'PEN';
     renderWithUrl(
       <CurrencyItem
         currency={existingCurrency}
+        countryNames={['United States of America']}
         baseCurrency={MOCK_BASE_CURRENCY}
       />
     );
@@ -82,8 +97,6 @@ describe('Currency Item', () => {
         baseCurrency={MOCK_BASE_CURRENCY}
       />
     );
-    const imageElement = await screen.findByAltText(MOCK_CURRENCY.currency);
-    fireEvent.error(imageElement);
     expect(
       screen.queryByAltText(MOCK_CURRENCY.currency)
     ).not.toBeInTheDocument();
