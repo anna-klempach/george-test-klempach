@@ -12,6 +12,7 @@ $color-border-active: $color-primary-dark;
 $color-background: #fafafa;
 $color-error: #906466;
 $color-error-background: color.adjust($color-error, $lightness: 40%);
+$color-disabled-background: color.adjust($color-secondary, $lightness: 50%);
 
 /* Size */
 
