@@ -8,4 +8,4 @@ export const getImageSrc = (currency: string = '') =>
 export const getCurrencyPrecision = (
   value: number = 0,
   precision: number = DEFAULT_PRECISION
-) => value.toFixed(precision ?? DEFAULT_PRECISION);
+) => (value ? value.toFixed(precision ?? DEFAULT_PRECISION) : '');

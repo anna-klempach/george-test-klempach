@@ -31,13 +31,13 @@ describe('getCurrencyPrecision', () => {
     expect(getCurrencyPrecision(value, null as any)).toBe(expectedResult);
   });
 
-  it('should set default value to 0 and precision to default precision value if neither value nor precision is provided', () => {
-    const expectedResult = '0.00';
+  it('should return undefined if neither value nor precision is provided', () => {
+    const expectedResult = '';
     expect(getCurrencyPrecision()).toBe(expectedResult);
   });
-  it('should set default value to 0 if no value is provided', () => {
+  it('should return undefined if no value is provided', () => {
     const value = 0;
-    const expectedResult = '0.00';
+    const expectedResult = '';
     expect(getCurrencyPrecision(value)).toBe(expectedResult);
   });
 });

@@ -5,7 +5,6 @@
 .app {
   @include flex-column();
   justify-content: stretch;
-  width: 100vw;
   min-width: 300px;
   min-height: 100vh;
 }
@@ -19,4 +18,14 @@
 .appHeaderText {
   @include font-configuration($font-size-h1, $font-weight-bold);
   font-weight: $font-weight-bold;
+}
+
+.errorBoundary {
+  @include flex-row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  font-size: $font-size-h1;
+  color: $color-error;
 }

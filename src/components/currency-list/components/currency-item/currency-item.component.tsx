@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { Currency } from '../../../../models/currency.model';
+import { useState } from 'react';
 import styles from './currency-item.module.scss';
 import {
-  getCurrencyPrecision,
   getImageSrc,
   NOT_AVAILABLE_TEXT,
 } from '../../../../services/currency-list.service';
 
 export interface CurrencyItemProps {
-  item: Currency;
+  exchangeRate?: string;
   baseCurrency: string;
+  currency?: string;
 }
 
-export const CurrencyItem = ({ item, baseCurrency }: CurrencyItemProps) => {
-  const exchangeRate = item.exchangeRate?.middle;
-  const currency = item.currency?.trim() || item.nameI18N;
-  const precision = item.precision;
+export const CurrencyItem = ({
+  exchangeRate,
+  baseCurrency,
+  currency,
+}: CurrencyItemProps) => {
   const [imgSrc, setImgSrc] = useState<string | null>(getImageSrc(currency));
   if (!currency || currency === baseCurrency) {
     return null;
@@ -24,19 +24,22 @@ export const CurrencyItem = ({ item, baseCurrency }: CurrencyItemProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.currencyData}>
-        {imgSrc && (
+        {imgSrc ? (
           <img
             src={imgSrc}
             alt={currency}
             onError={() => setImgSrc(null)}
+            className={styles.imagePlaceholder}
           ></img>
+        ) : (
+          <div className={styles.imagePlaceholder} />
         )}
-        <p className={styles.currency}>{item.currency}</p>
+        <p className={styles.currency}>{currency}</p>
       </div>
       <div className={styles.currencyData}>
         {exchangeRate ? (
           <>
-            <p>{getCurrencyPrecision(exchangeRate, precision)}</p>
+            <p>{exchangeRate}</p>
             <p>{baseCurrency}</p>
           </>
         ) : (

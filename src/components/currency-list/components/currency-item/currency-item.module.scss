@@ -4,6 +4,7 @@
 .container {
   @include flex-row($size-small);
   justify-content: space-between;
+  min-height: 60px;
   flex-wrap: wrap;
   padding: $size-medium;
   color: $color-primary-dark;
@@ -22,4 +23,17 @@
 
 .noData {
   color: $color-secondary;
+}
+
+.imagePlaceholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 50px;
+  color: $color-secondary;
+  background-color: $color-disabled-background;
+  border: 1px solid $color-border;
+  border-radius: 10px;
+  object-fit: fill;
 }
