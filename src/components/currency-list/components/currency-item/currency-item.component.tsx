@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import styles from './currency-item.module.scss';
 import {
-  getImageSrc,
+  getFlagCountryCode,
   NOT_AVAILABLE_TEXT,
 } from '../../../../services/currency-list.service';
+import Flag from 'react-world-flags';
 
 export interface CurrencyItemProps {
   exchangeRate?: string;
@@ -18,7 +18,6 @@ export const CurrencyItem = ({
   countryNames = [],
   currency,
 }: CurrencyItemProps) => {
-  const [imgSrc, setImgSrc] = useState<string | null>(getImageSrc(currency));
   if (!currency || currency === baseCurrency) {
     return null;
   }
@@ -26,16 +25,11 @@ export const CurrencyItem = ({
   return (
     <div className={styles.container}>
       <div className={styles.currencyData}>
-        {imgSrc ? (
-          <img
-            src={imgSrc}
-            alt={currency}
-            onError={() => setImgSrc(null)}
-            className={styles.imagePlaceholder}
-          ></img>
-        ) : (
-          <div className={styles.imagePlaceholder} />
-        )}
+        <Flag
+          className={styles.imagePlaceholder}
+          code={getFlagCountryCode(countryNames?.[0])}
+          fallback={<div className={styles.imagePlaceholder} />}
+        />
         <p className={styles.currency}>{currency}</p>
         {countryNames.length > 0 && (
           <div className={styles.countries}>

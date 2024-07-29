@@ -19,6 +19,7 @@
     "react-error-boundary": "^4.0.13",
     "react-router-dom": "^6.25.1",
     "react-scripts": "^5.0.1",
+    "react-world-flags": "^1.6.0",
     "sass": "^1.77.8",
     "sweetalert": "^2.1.2",
     "typescript": "^3.2.1"
@@ -66,6 +67,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@types/countryjs": "^1.8.4"
+    "@types/countryjs": "^1.8.4",
+    "@types/react-world-flags": "^1.4.5"
   }
 }
